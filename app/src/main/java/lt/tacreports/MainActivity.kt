@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                             version = version,
                             actions = HomeActions(
                                 onBubble = ::setBubble,
-                                onFill = { startActivity(Intent(this, FillActivity::class.java).putExtra(FillActivity.EXTRA_ID, it)) },
+                                onFill = { startActivity(Intent(this@MainActivity, FillActivity::class.java).putExtra(FillActivity.EXTRA_ID, it)) },
                                 onEdit = { editing = it },
                                 onNew = {
                                     val t = Template(name = getString(R.string.new_template_name))
