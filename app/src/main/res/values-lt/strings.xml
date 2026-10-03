@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">TacReports</string>
+
+    <string name="bubble">Plaukiojantis mygtukas</string>
+    <string name="bubble_help">Mygtukas virš kitų programų. Paspauskite, pasirinkite raportą, užpildykite tuščius laukus ir spauskite „Kopijuoti“: tekstą galima įklijuoti į bet kurį pokalbį. Mygtuką galima tempti.</string>
+    <string name="overlay_needed">Leiskite TacReports „Rodyti virš kitų programų“ ir grįžkite.</string>
+    <string name="bubble_channel">Plaukiojantis mygtukas</string>
+    <string name="bubble_notification">Raportų mygtukas įjungtas</string>
+    <string name="bubble_notification_text">Paspauskite mygtuką raportui užpildyti.</string>
+    <string name="bubble_stop">Išjungti</string>
+    <string name="bubble_open">Atidaryti raportus</string>
+
+    <string name="templates">Šablonai</string>
+    <string name="field_count">Pildomų laukų: %d</string>
+    <string name="fill">Pildyti</string>
+    <string name="new_template">+ Naujas</string>
+    <string name="new_template_name">Naujas raportas</string>
+    <string name="import_clipboard">Importuoti</string>
+    <string name="share_all">Dalintis visais</string>
+    <string name="restore_examples">Grąžinti pavyzdžius</string>
+    <string name="import_none">Šablonų nerasta. Pirmiau nukopijuokite atsiųstą šablono tekstą.</string>
+    <string name="imported">Importuota šablonų: %d</string>
+
+    <string name="language">Kalba</string>
+    <string name="language_auto">Telefono</string>
+    <string name="mgrs_precision">MGRS skaitmenys</string>
+    <string name="dtg_help">DTG: DD HHMM Z MMM YY, pvz. 03 1825 C OCT 26. C – vasaros laikas, B – žiemos laikas.</string>
+
+    <string name="edit_template">Šablonas</string>
+    <string name="template_name">Pavadinimas</string>
+    <string name="share">Dalintis</string>
+    <string name="duplicate">Kopija</string>
+    <string name="copy_suffix">(kopija)</string>
+    <string name="delete">Trinti</string>
+    <string name="delete_confirm">Tikrai?</string>
+    <string name="kind_input">Pildomas</string>
+    <string name="kind_fixed">Pastovus</string>
+    <string name="kind_header">Skyrius</string>
+    <string name="hint_label">Pavadinimas, pvz. 1 Vieta</string>
+    <string name="hint_section">Skyriaus pavadinimas (tuščias = skyriaus pabaiga)</string>
+    <string name="hint_fixed">Pastovus tekstas</string>
+    <string name="hint_hint">Pilka užuomina (nebūtina)</string>
+    <string name="hint_options">Pasirinkimai, po vieną eilutėje: KODAS = tekstas (nebūtina)</string>
+    <string name="remember">Prisiminti paskutinę reikšmę (pvz. Kam, Nuo)</string>
+    <string name="add_field">+ Laukas</string>
+    <string name="add_section">+ Skyrius</string>
+    <string name="editor_help">Pildomas: klausiama kiekvieną kartą. Pastovus: visada įrašomas, neklausiama. Skyrius: pavadinimas įrašomas tik tada, kai po juo yra užpildytas laukas. Tušti laukai į raportą neįtraukiami.</string>
+
+    <string name="pick_title">Raportas</string>
+    <string name="no_templates">Šablonų dar nėra.</string>
+    <string name="draft">juodraštis</string>
+    <string name="manage_templates">Tvarkyti šablonus</string>
+    <string name="clear">Išvalyti</string>
+    <string name="preview">Peržiūra</string>
+    <string name="edit">Pildyti</string>
+    <string name="copy_report">Kopijuoti</string>
+    <string name="copied">Nukopijuota, galima įklijuoti</string>
+    <string name="no_fix">Nėra GPS. Išeikite į lauką arba palaukite.</string>
+    <string name="old_fix">Padėtis prieš %d min.</string>
+    <string name="no_location_permission">MGRS reikia vietos leidimo</string>
+</resources>

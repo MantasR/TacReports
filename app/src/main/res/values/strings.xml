@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">TacReports</string>
+
+    <string name="bubble">Floating bubble</string>
+    <string name="bubble_help">A button over other apps. Tap it, pick a report, fill in the blanks and tap Copy: the text is ready to paste into any chat. Drag it to move it.</string>
+    <string name="overlay_needed">Allow \"Display over other apps\" for TacReports, then come back.</string>
+    <string name="bubble_channel">Floating bubble</string>
+    <string name="bubble_notification">Report bubble is on</string>
+    <string name="bubble_notification_text">Tap the bubble to fill in a report.</string>
+    <string name="bubble_stop">Stop</string>
+    <string name="bubble_open">Open reports</string>
+
+    <string name="templates">Templates</string>
+    <string name="field_count">%d fields to fill</string>
+    <string name="fill">Fill</string>
+    <string name="new_template">+ New</string>
+    <string name="new_template_name">New report</string>
+    <string name="import_clipboard">Import</string>
+    <string name="share_all">Share all</string>
+    <string name="restore_examples">Restore examples</string>
+    <string name="import_none">No templates found. Copy a shared template text first.</string>
+    <string name="imported">Imported %d templates</string>
+
+    <string name="language">Language</string>
+    <string name="language_auto">Phone</string>
+    <string name="mgrs_precision">MGRS digits</string>
+    <string name="dtg_help">DTG: DD HHMM Z MMM YY, e.g. 03 1825 C OCT 26. C = summer time, B = winter time.</string>
+
+    <string name="edit_template">Template</string>
+    <string name="template_name">Name</string>
+    <string name="share">Share</string>
+    <string name="duplicate">Duplicate</string>
+    <string name="copy_suffix">(copy)</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirm">Sure?</string>
+    <string name="kind_input">Fill in</string>
+    <string name="kind_fixed">Fixed</string>
+    <string name="kind_header">Section</string>
+    <string name="hint_label">Label, e.g. 1 Vieta</string>
+    <string name="hint_section">Section title (empty = end of section)</string>
+    <string name="hint_fixed">Fixed text</string>
+    <string name="hint_hint">Grey hint (optional)</string>
+    <string name="hint_options">Options, one per line: CODE = text (optional)</string>
+    <string name="remember">Keep last value (e.g. Kam, Nuo)</string>
+    <string name="add_field">+ Field</string>
+    <string name="add_section">+ Section</string>
+    <string name="editor_help">Fill in: asked each time. Fixed: always printed, never asked. Section: a title printed only when a field below it has a value. Empty fields are left out of the report.</string>
+
+    <string name="pick_title">Report</string>
+    <string name="no_templates">No templates yet.</string>
+    <string name="draft">draft</string>
+    <string name="manage_templates">Manage templates</string>
+    <string name="clear">Clear</string>
+    <string name="preview">Preview</string>
+    <string name="edit">Edit</string>
+    <string name="copy_report">Copy report</string>
+    <string name="copied">Copied, ready to paste</string>
+    <string name="no_fix">No GPS fix. Go outside or wait a moment.</string>
+    <string name="old_fix">Position is %d min old</string>
+    <string name="no_location_permission">Location permission is needed for MGRS</string>
+</resources>

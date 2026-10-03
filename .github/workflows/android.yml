@@ -1,0 +1,32 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Unit tests
+        run: ./gradlew testDebugUnitTest
+      - name: Build APK
+        env:
+          SIGNING_KEYSTORE_B64: ${{ secrets.SIGNING_KEYSTORE_B64 }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+        run: |
+          if [ -z "$SIGNING_KEYSTORE_B64" ]; then
+            echo "::warning::Signing secrets are not set; this APK is signed with the DEBUG key."
+          fi
+          ./gradlew assembleRelease
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TacReports-${{ github.sha }}
+          path: app/build/outputs/apk/release/app-release.apk

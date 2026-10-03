@@ -1,0 +1,14 @@
+<resources>
+    <style name="Theme.TacReports" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/tac_bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+    <style name="Theme.TacReports.Fill">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+    <color name="tac_bg">#020B0D</color>
+    <color name="tac_cyan">#2EE6D0</color>
+</resources>
