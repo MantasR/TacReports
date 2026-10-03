@@ -49,6 +49,8 @@ Every card has a header: Kam (to), Nuo (from), Raportas (type), Laikas (time), R
   option chips, copy to clipboard, drafts kept until copied, "keep last value" fields, template editor,
   share/import as JSON text, the four example cards, LT/EN, MGRS digits setting (10/8/6).
   Built by GitHub Actions only (the session couldn't reach dl.google.com); logic tests also run locally.
+  The session also can't download Actions artifacts (blob storage blocked), so the owner gets the APK from
+  the run's Artifacts section (a zip with app-release.apk). Signed with the DEBUG key (no signing secrets here).
 
 ## Open questions
 1. DTG spacing: "03 1825 C OCT 26" (as written) or the compact "031825COCT26"?
