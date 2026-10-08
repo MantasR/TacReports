@@ -41,7 +41,8 @@ Chakra Petch + JetBrains Mono (in `shared/src/commonMain/composeResources/font`)
   `./gradlew :shared:testDebugUnitTest :androidApp:assembleDebug`.
 - iOS needs macOS: on a Mac, `cd iosApp && xcodegen` then open `TacReports.xcodeproj`; Xcode's build
   phase runs Gradle for the Kotlin framework. CI does the same on a `macos-15` runner.
-- `.github/workflows/app.yml` (repo root, runs in this folder): Android tests + `assembleRelease` (APK artifact), iOS tests +
+- `.github/workflows/app.yml` (repo root, runs in this folder): Android tests + `assembleRelease`, published
+  as the `android-latest` release (phone link: github.com/MantasR/TacReports/releases/download/android-latest/TacReports.apk); iOS tests +
   unsigned simulator build. Installing on an iPhone needs an Apple Developer account and signing.
 - Android signing: `SIGNING_KEYSTORE_B64` + `SIGNING_PASSWORD` (+ optional `SIGNING_ALIAS`) as secrets,
   else the debug key. Never commit a keystore or password.
