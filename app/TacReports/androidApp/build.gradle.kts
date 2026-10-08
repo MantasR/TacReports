@@ -9,7 +9,7 @@ plugins {
 
 /**
  * Release key: a base64 PKCS12 keystore in SIGNING_KEYSTORE_B64 plus its password in SIGNING_PASSWORD
- * (alias in SIGNING_ALIAS, default "simplegrid"). They come from GitHub Actions secrets or the
+ * (alias in SIGNING_ALIAS, default "upload"). They come from GitHub Actions secrets or the
  * environment and are never committed. Without them the release build uses the debug key.
  */
 val releaseKeystore: File? = System.getenv("SIGNING_KEYSTORE_B64")?.takeIf { it.isNotBlank() }?.let { b64 ->
@@ -27,7 +27,8 @@ android {
         applicationId = "lt.tacreports"
         minSdk = 26
         targetSdk = 36
-        versionCode = 2
+        // Play needs a higher code for every upload: CI builds use 100 + the workflow run number.
+        versionCode = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull()?.let { 100 + it } ?: 2
         versionName = "0.2.0"
     }
 
@@ -37,7 +38,7 @@ android {
                 storeFile = file
                 storeType = "pkcs12"
                 storePassword = System.getenv("SIGNING_PASSWORD")
-                keyAlias = System.getenv("SIGNING_ALIAS")?.takeIf { it.isNotBlank() } ?: "simplegrid"
+                keyAlias = System.getenv("SIGNING_ALIAS")?.takeIf { it.isNotBlank() } ?: "upload"
                 keyPassword = System.getenv("SIGNING_PASSWORD")
             }
         }

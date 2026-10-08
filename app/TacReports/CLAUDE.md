@@ -44,9 +44,11 @@ Chakra Petch + JetBrains Mono (in `shared/src/commonMain/composeResources/font`)
 - `.github/workflows/app.yml` (repo root, runs in this folder): Android tests + `assembleRelease`, published
   as the `android-latest` release (phone link: github.com/MantasR/TacReports/releases/download/android-latest/TacReports.apk); iOS tests +
   unsigned simulator build. Installing on an iPhone needs an Apple Developer account and signing.
-- Android signing: `SIGNING_KEYSTORE_B64` + `SIGNING_PASSWORD` (+ optional `SIGNING_ALIAS`) as secrets,
-  else the debug key. Never commit a keystore or password.
-- Bump `versionCode` / `versionName` in `androidApp/build.gradle.kts` and `MARKETING_VERSION` /
+- Android signing: the Play upload key (alias `upload`, kept by the owner outside the repo) comes from the
+  secrets `SIGNING_KEYSTORE_B64` + `SIGNING_PASSWORD` (+ `SIGNING_ALIAS`), else the debug key. Play App
+  Signing re-signs Play installs, so a Play install and a GitHub APK can't update each other. Never commit a keystore or password.
+- Bump `versionName` in `androidApp/build.gradle.kts` (`versionCode` is 100 + the CI run number, as Play
+  needs a higher one for every upload) and `MARKETING_VERSION` /
   `CURRENT_PROJECT_VERSION` in `iosApp/project.yml` for every build handed over.
 
 ## Conventions

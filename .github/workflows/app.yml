@@ -24,31 +24,37 @@ jobs:
       - uses: gradle/actions/setup-gradle@v5
       - name: Shared logic tests
         run: ./gradlew :shared:testDebugUnitTest
-      - name: Build APK
+      # APK for the phone link, AAB (app bundle) for Google Play; both signed with the upload key.
+      - name: Build APK and AAB
         env:
           SIGNING_KEYSTORE_B64: ${{ secrets.SIGNING_KEYSTORE_B64 }}
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          SIGNING_ALIAS: ${{ secrets.SIGNING_ALIAS }}
         run: |
           if [ -z "$SIGNING_KEYSTORE_B64" ]; then
-            echo "::warning::Signing secrets are not set; this APK is signed with the DEBUG key."
+            echo "::warning::Signing secrets are not set; this build is signed with the DEBUG key (Play will reject the AAB)."
           fi
-          ./gradlew :androidApp:assembleRelease
+          ./gradlew :androidApp:assembleRelease :androidApp:bundleRelease
+          cp androidApp/build/outputs/apk/release/androidApp-release.apk TacReports.apk
+          cp androidApp/build/outputs/bundle/release/androidApp-release.aab TacReports.aab
       - uses: actions/upload-artifact@v4
         with:
           name: TacReports-android-${{ github.sha }}
-          path: app/TacReports/androidApp/build/outputs/apk/release/androidApp-release.apk
-      # A fixed, login-free link for the phone:
-      # https://github.com/MantasR/TacReports/releases/download/android-latest/TacReports.apk
-      - name: Publish phone download link
+          path: |
+            app/TacReports/TacReports.apk
+            app/TacReports/TacReports.aab
+      # Fixed, login-free links:
+      # https://github.com/MantasR/TacReports/releases/download/android-latest/TacReports.apk (phone)
+      # https://github.com/MantasR/TacReports/releases/download/android-latest/TacReports.aab (Play Console upload)
+      - name: Publish download links
         if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp androidApp/build/outputs/apk/release/androidApp-release.apk TacReports.apk
           gh release delete android-latest --yes --cleanup-tag || true
-          gh release create android-latest TacReports.apk --prerelease --target "$GITHUB_SHA" \
+          gh release create android-latest TacReports.apk TacReports.aab --prerelease --target "$GITHUB_SHA" \
             --title "TacReports Android (latest build)" \
-            --notes "Built from ${GITHUB_SHA::7}. Open on the phone, download TacReports.apk and install it."
+            --notes "Built from ${GITHUB_SHA::7}, version code $((100 + GITHUB_RUN_NUMBER)). On the phone: download TacReports.apk and install it. For Google Play: upload TacReports.aab in Play Console."
 
   # Compiles the iOS app for the simulator (unsigned): proves the shared code and the Swift shell build.
   # An installable iPhone build needs an Apple Developer account and signing secrets on top of this.

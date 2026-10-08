@@ -12,3 +12,4 @@ xcuserdata/
 *.xcodeproj/
 iosApp/build/
 iosApp/TacReports/Info.plist
+*.aab
