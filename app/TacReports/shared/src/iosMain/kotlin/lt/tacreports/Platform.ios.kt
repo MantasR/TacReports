@@ -14,6 +14,7 @@ import platform.UIKit.UIActivityViewController
 import platform.UIKit.UIApplication
 import platform.UIKit.UIPasteboard
 import platform.UIKit.UIViewController
+import platform.UIKit.popoverPresentationController
 
 /** NSUserDefaults-backed store; the template list is one JSON string in it. */
 object IosKeyValueStore : KeyValueStore {
