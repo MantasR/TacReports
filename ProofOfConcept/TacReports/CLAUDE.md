@@ -2,7 +2,8 @@
 
 Android app for quick military-style text reports (SITREP, CONTREP, MEDEVAC, PERSREP...).
 Same owner as SimpleGrid; personal use; the owner tests every build on their own phone.
-Read `MEMORY.md` for the idea, decisions and open questions.
+The proof of concept (0.1.0), kept for reference: new work goes to `app/TacReports`.
+Read the repo-root `MEMORY.md` for the idea, decisions and open questions.
 
 **This repo is PUBLIC.** Don't copy code from the private SimpleGrid repo here, and don't put
 personal or unit details in commits, code or notes.
@@ -29,7 +30,7 @@ Chakra Petch + JetBrains Mono (both cover Lithuanian letters). Bilingual: every 
 `values/strings.xml` (EN) and `values-lt/strings.xml` (LT).
 
 ## Building
-- `.github/workflows/android.yml` runs unit tests and `assembleRelease` on every push to `main`
+- `.github/workflows/proof-of-concept.yml` (repo root) runs unit tests and `assembleRelease` on pushes to `main` that touch this folder
   and uploads the APK as a workflow artifact (download needs a GitHub login).
 - In a cloud session the Android SDK host `dl.google.com` may be blocked. The pure-Kotlin logic
   (`model/`, `geo/`) and its tests can still be run with a throwaway Kotlin/JVM Gradle project that

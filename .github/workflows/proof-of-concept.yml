@@ -1,9 +1,14 @@
-name: Build APK
+name: Proof of concept (Android 0.1.0)
 
 on:
   push:
     branches: [main]
+    paths: ["ProofOfConcept/TacReports/**", ".github/workflows/proof-of-concept.yml"]
   workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ProofOfConcept/TacReports
 
 jobs:
   build:
@@ -28,5 +33,5 @@ jobs:
           ./gradlew assembleRelease
       - uses: actions/upload-artifact@v4
         with:
-          name: TacReports-${{ github.sha }}
-          path: app/build/outputs/apk/release/app-release.apk
+          name: TacReports-poc-${{ github.sha }}
+          path: ProofOfConcept/TacReports/app/build/outputs/apk/release/app-release.apk
