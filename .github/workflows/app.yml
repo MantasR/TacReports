@@ -61,12 +61,22 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v5
+      # Failures are repeated as one annotation, readable without opening the (login-only) log.
       - name: Shared logic tests on iOS
-        run: ./gradlew :shared:iosSimulatorArm64Test
+        run: |
+          ./gradlew :shared:iosSimulatorArm64Test > gradle.log 2>&1 || {
+            cat gradle.log
+            echo "::error title=iOS Kotlin build::$(grep -E '^e: |What went wrong|FAILED|Caused by' -A2 gradle.log | head -40 | awk 'BEGIN{ORS="%0A"} {gsub(/%/,"%25"); print}')"
+            exit 1
+          }
       - name: Generate Xcode project
         run: brew install xcodegen && cd iosApp && xcodegen
       - name: Build for simulator
         run: |
           xcodebuild -project iosApp/TacReports.xcodeproj -scheme TacReports \
             -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
-            -configuration Debug ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build
+            -configuration Debug ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build > xcode.log 2>&1 || {
+            cat xcode.log
+            echo "::error title=Xcode build::$(grep -E 'error:|BUILD FAILED' xcode.log | sort -u | head -30 | awk 'BEGIN{ORS="%0A"} {gsub(/%/,"%25"); print}')"
+            exit 1
+          }
