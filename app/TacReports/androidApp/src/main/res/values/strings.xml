@@ -1,0 +1,4 @@
+<resources>
+    <!-- Only the launcher label lives here; the UI texts are in shared Strings.kt (EN + LT). -->
+    <string name="app_name" translatable="false">TacReports</string>
+</resources>

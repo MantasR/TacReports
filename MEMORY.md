@@ -1,7 +1,7 @@
 # TacReports: project memory
 
 ## The idea (owner, 2026-10-03)
-An Android app for report templates. Owner's words: "allow in short cuts to set up reports templates".
+An app for report templates. Android first (0.1.0); since 2026-10-05 also iOS (0.2.0). Owner's words: "allow in short cuts to set up reports templates".
 
 Clarified by the owner (2026-10-03):
 - Templates change for every mission, so the user must be able to set them up (create/edit) quickly.
@@ -36,6 +36,19 @@ Every card has a header: Kam (to), Nuo (from), Raportas (type), Laikas (time), R
   time and B = winter time (NATO zone letters for UTC+3 / UTC+2). Implemented as the phone's current
   offset letter; month in English capitals (OCT). Spacing as the owner wrote it: "03 1825 C OCT 26".
 
+## Decisions (owner, 2026-10-05)
+- Port to Kotlin Multiplatform + Compose Multiplatform so one code base serves Android and iOS
+  (chosen over React Native: the logic and UI were already Kotlin/Compose).
+- Briefly renamed "TacRaports" (2026-10-05); the owner reverted that on 2026-10-08: the name stays
+  **TacReports**, app id `lt.tacreports`, so 0.2.0 upgrades 0.1.0 (only when both APKs carry the same
+  signing key; CI debug keys differ per run). 0.2.0 copies 0.1.0's templates and settings on first start.
+- iOS has no overlay bubble; the replacement is a "New report" App Intent (Shortcuts, Action Button,
+  Back Tap) plus the `tacreports://` URL. After Copy the user switches back to the chat by hand.
+
+## Repo layout (owner, 2026-10-08)
+- One repo: `ProofOfConcept/TacReports` = the Android-only 0.1.0 (kept as is), `app/TacReports` = the
+  KMP version (Android + iOS) where new work happens. This MEMORY.md at the root covers both.
+
 ## Design ideas (first proposal)
 - Per-mission values set once and reused: Kam, Nuo (callsign), frequency etc. Time (DTG) filled automatically,
   report number auto-incremented. Fields with fixed options (MEDEVAC letters, sizes) as tap-to-pick chips;
@@ -51,6 +64,8 @@ Every card has a header: Kam (to), Nuo (from), Raportas (type), Laikas (time), R
   Built by GitHub Actions only (the session couldn't reach dl.google.com); logic tests also run locally.
   The session also can't download Actions artifacts (blob storage blocked), so the owner gets the APK from
   the run's Artifacts section (a zip with app-release.apk). Signed with the DEBUG key (no signing secrets here).
+- **0.2.0** (2026-10-05): KMP port in `app/TacReports`. Same features as 0.1.0 on Android; iOS app
+  with the same screens, Core Location MGRS, App Intent. Template JSON format unchanged.
 
 ## Open questions
 1. DTG spacing: "03 1825 C OCT 26" (as written) or the compact "031825COCT26"?
@@ -59,5 +74,6 @@ Every card has a header: Kam (to), Nuo (from), Raportas (type), Laikas (time), R
 
 ## Notes
 - Separate from SimpleGrid on purpose (the owner's decision); may later reuse its look and team relay.
-- This repo is PUBLIC. Ask the owner before relying on that, or before copying SimpleGrid code here.
-- Nothing is built yet.
+- This repo is PUBLIC.
+- iOS open points: Apple Developer account for installing on a phone; Control Center / widget entry
+  points (need a Swift widget extension) not built yet.

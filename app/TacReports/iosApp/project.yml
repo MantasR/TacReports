@@ -1,0 +1,48 @@
+# XcodeGen spec: `cd iosApp && xcodegen` writes TacReports.xcodeproj (not committed).
+name: TacReports
+options:
+  bundleIdPrefix: lt.tacreports
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    MARKETING_VERSION: "0.2.0"
+    CURRENT_PROJECT_VERSION: "2"
+    SWIFT_VERSION: "5.0"
+targets:
+  TacReports:
+    type: application
+    platform: iOS
+    sources:
+      - TacReports
+    scheme: {}
+    info:
+      path: TacReports/Info.plist
+      properties:
+        CFBundleDisplayName: TacReports
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleLocalizations: [en, lt]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        # Compose Multiplatform needs this for 120 Hz screens.
+        CADisableMinimumFrameDurationOnPhone: true
+        NSLocationWhenInUseUsageDescription: "Your position is put into the report as MGRS when you tap the MGRS button."
+        CFBundleURLTypes:
+          - CFBundleURLName: lt.tacreports
+            CFBundleURLSchemes: [tacreports]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: lt.tacreports
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        # The Kotlin build below runs Gradle, which the script sandbox would block.
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+        FRAMEWORK_SEARCH_PATHS: $(inherited) $(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)
+        OTHER_LDFLAGS: $(inherited) -framework Shared
+    preBuildScripts:
+      - name: Build Kotlin framework
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT/.."
+          ./gradlew :shared:embedAndSignAppleFrameworkForXcode

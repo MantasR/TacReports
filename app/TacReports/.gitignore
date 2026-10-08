@@ -1,0 +1,14 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+*.apk
+*.keystore
+*.jks
+*.p12
+xcuserdata/
+*.xcodeproj/
+iosApp/build/
+iosApp/TacReports/Info.plist

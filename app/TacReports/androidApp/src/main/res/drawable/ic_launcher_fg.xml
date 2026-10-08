@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Report sheet with corner brackets and an amber first line, in the 108dp adaptive-icon canvas. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:strokeColor="#2EE6D0" android:strokeWidth="2"
+        android:pathData="M32,40 V32 H40 M68,32 H76 V40 M76,68 V76 H68 M40,76 H32 V68" />
+    <path android:strokeColor="#CFFFF8" android:strokeWidth="2.5" android:strokeLineJoin="miter"
+        android:pathData="M42,36 H66 V72 H42 Z" />
+    <path android:strokeColor="#FFB000" android:strokeWidth="2.5" android:strokeLineCap="round"
+        android:pathData="M47,45 H61" />
+    <path android:strokeColor="#CFFFF8" android:strokeWidth="2.5" android:strokeLineCap="round"
+        android:pathData="M47,53 H61 M47,61 H55" />
+</vector>
