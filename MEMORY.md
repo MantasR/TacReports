@@ -40,8 +40,9 @@ Every card has a header: Kam (to), Nuo (from), Raportas (type), Laikas (time), R
 - Port to Kotlin Multiplatform + Compose Multiplatform so one code base serves Android and iOS
   (chosen over React Native: the logic and UI were already Kotlin/Compose).
 - Briefly renamed "TacRaports" (2026-10-05); the owner reverted that on 2026-10-08: the name stays
-  **TacReports**, app id `lt.tacreports`, so 0.2.0 upgrades 0.1.0 (only when both APKs carry the same
-  signing key; CI debug keys differ per run). 0.2.0 copies 0.1.0's templates and settings on first start.
+  **TacReports**.
+- App id `com.mantasr.tacreports` (Android and iOS; owner's Play Console app, 2026-10-09). 0.1.0 is
+  `lt.tacreports`, so the two install side by side; templates move over with Share / Import.
 - iOS has no overlay bubble; the replacement is a "New report" App Intent (Shortcuts, Action Button,
   Back Tap) plus the `tacreports://` URL. After Copy the user switches back to the chat by hand.
 

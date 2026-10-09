@@ -18,8 +18,8 @@ commits, code or notes.
 - Every field row has an MGRS button (one GPS fix) and a DTG button: `DD HHMM Z MMM YY`,
   Z = NATO zone letter of the phone's offset (LT: C summer, B winter).
 - Templates are edited in the app and shared as JSON text (same format as 0.1.0).
-- Same app id as 0.1.0 (`lt.tacreports`): on first start `androidApp/.../AndroidStores.kt` copies
-  0.1.0's templates and settings into the new store.
+- App id `com.mantasr.tacreports` on both platforms (fixed by the Play Console app); the Kotlin
+  packages stay `lt.tacreports`. 0.1.0 (`lt.tacreports`) is a separate app on the phone.
 
 ## Where things live
 | Area | Files |

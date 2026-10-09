@@ -1,7 +1,7 @@
 # XcodeGen spec: `cd iosApp && xcodegen` writes TacReports.xcodeproj (not committed).
 name: TacReports
 options:
-  bundleIdPrefix: lt.tacreports
+  bundleIdPrefix: com.mantasr
   deploymentTarget:
     iOS: "16.0"
 settings:
@@ -29,11 +29,11 @@ targets:
         CADisableMinimumFrameDurationOnPhone: true
         NSLocationWhenInUseUsageDescription: "Your position is put into the report as MGRS when you tap the MGRS button."
         CFBundleURLTypes:
-          - CFBundleURLName: lt.tacreports
+          - CFBundleURLName: com.mantasr.tacreports
             CFBundleURLSchemes: [tacreports]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: lt.tacreports
+        PRODUCT_BUNDLE_IDENTIFIER: com.mantasr.tacreports
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         TARGETED_DEVICE_FAMILY: "1"
         # The Kotlin build below runs Gradle, which the script sandbox would block.

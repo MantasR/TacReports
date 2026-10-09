@@ -24,7 +24,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "lt.tacreports"
+        applicationId = "com.mantasr.tacreports"
         minSdk = 26
         targetSdk = 36
         // Play needs a higher code for every upload: CI builds use 100 + the workflow run number.
