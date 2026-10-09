@@ -16,11 +16,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import lt.tacreports.Prefs
 import lt.tacreports.model.FieldKind
 import lt.tacreports.model.TemplateStore
 import lt.tacreports.strings
+
+/** Public policy page; Google Play requires a link to it inside the app. */
+const val PRIVACY_URL = "https://github.com/MantasR/TacReports/blob/main/PRIVACY.md"
 
 /** Callbacks the home screen needs from its host. */
 class HomeActions(
@@ -38,6 +42,7 @@ fun HomeScreen(version: String, actions: HomeActions, quickPanel: @Composable ()
     val templates by TemplateStore.templates.collectAsState()
     val language by Prefs.language.collectAsState()
     val mgrsDigits by Prefs.mgrsDigits.collectAsState()
+    val uriHandler = LocalUriHandler.current
     Column(
         Modifier
             .fillMaxSize()
@@ -90,6 +95,7 @@ fun HomeScreen(version: String, actions: HomeActions, quickPanel: @Composable ()
                 TacChip("6 (100 m)", mgrsDigits == 3) { Prefs.setMgrsDigits(3) }
             }
             Text(s.dtgHelp, style = TacType.Small)
+            TacButton(s.privacyPolicy, { uriHandler.openUri(PRIVACY_URL) }, Modifier.fillMaxWidth(), small = true)
         }
     }
 }

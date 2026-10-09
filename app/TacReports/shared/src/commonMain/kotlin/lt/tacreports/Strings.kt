@@ -63,6 +63,7 @@ class Strings(
     val noFix: String,
     val oldFix: (Int) -> String,
     val noLocationPermission: String,
+    val privacyPolicy: String,
 )
 
 val En = Strings(
@@ -123,6 +124,7 @@ val En = Strings(
     noFix = "No GPS fix. Go outside or wait a moment.",
     oldFix = { "Position is $it min old" },
     noLocationPermission = "Location permission is needed for MGRS",
+    privacyPolicy = "Privacy policy",
 )
 
 val Lt = Strings(
@@ -183,6 +185,7 @@ val Lt = Strings(
     noFix = "Nėra GPS. Išeikite į lauką arba palaukite.",
     oldFix = { "Padėtis prieš $it min." },
     noLocationPermission = "MGRS reikia vietos leidimo",
+    privacyPolicy = "Privatumo politika",
 )
 
 fun stringsFor(language: String?): Strings = if ((language ?: systemLanguage()) == "lt") Lt else En
